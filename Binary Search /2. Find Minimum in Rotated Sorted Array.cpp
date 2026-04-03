@@ -46,7 +46,6 @@ public:
                 high = mid;
             }
         }
-
         return nums[low];
     }
 };
