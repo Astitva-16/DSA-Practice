@@ -30,7 +30,7 @@ public:
 
 
 //APPRAOCH - 2 Optimised way -> Binary search on trips from 1 to min_element * totalTrips
-//Time Complexity - O(n * t)
+//Time Complexity - O(n * log(t))
 //Space Complexity - O(1)
 
 class Solution {
