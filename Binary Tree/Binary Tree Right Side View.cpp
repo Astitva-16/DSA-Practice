@@ -2,7 +2,7 @@
 https://leetcode.com/problems/binary-tree-right-side-view/
 */
 
-// approach - 
+// approach - BFS
 /*Root ko queue me daal kar level order traversal (BFS) start karo.
 Har level ke liye n = q.size() lo.
 n nodes process karo:
@@ -47,6 +47,53 @@ public:
             }
             ans.push_back(node -> val);
         }
+
+        return ans;
+    }
+};
+
+
+
+
+// appraoch - DFS
+/*
+Start a preorder DFS from the root with level = 1.
+Visit the right child first, then the left child.
+If ans.size() < level, it means this is the first node visited at that level, so add its value to ans.
+Continue the recursion for the right and left subtrees.
+Since the right subtree is visited first, the first node encountered at each level is the rightmost visible node.
+Return ans.
+*/
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+class Solution {
+public:
+
+    void preorder(TreeNode* root, int level, vector<int>& ans){
+        if(!root) return;
+
+        if(ans.size() < level){
+            ans.push_back(root -> val);
+        }
+
+        preorder(root -> right, level + 1, ans);
+        preorder(root -> left, level + 1, ans);
+    }
+
+    vector<int> rightSideView(TreeNode* root) {
+        vector<int> ans;
+
+        preorder(root, 1, ans);
 
         return ans;
     }
