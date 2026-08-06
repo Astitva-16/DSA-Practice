@@ -1,5 +1,5 @@
 /*
-Problem - Best Time to buy and sell Stocks
+Problem - Best Time to buy and sell Stocks III
 LeetCode - https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/
 */
 
