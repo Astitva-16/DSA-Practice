@@ -74,3 +74,42 @@ public:
         return solve(0, 0, n, triangle, dp);
     }
 };
+
+
+
+
+// TABULATION ->
+/*
+Create dp[i][j] = minimum path sum from (i,j) to the last row.
+Initialize the last row of dp with the values of the triangle because those cells are already at the destination level.
+Traverse from bottom to top (i = n-2 → 0).
+For every cell (i,j), calculate:
+  down = dp[i+1][j]
+  diag = dp[i+1][j+1]
+Store:
+dp[i][j] = triangle[i][j] + min(down, diag).
+Finally, dp[0][0] contains the minimum path sum.
+*/
+class Solution {
+public:
+    int minimumTotal(vector<vector<int>>& triangle) {
+        int n = triangle.size();
+
+        vector<vector<int>> dp(n, vector<int>(n));
+        
+        for(int i = 0; i < n; i++){
+            dp[n - 1][i] = triangle[n - 1][i];
+        }
+
+        for(int i = n - 2; i >= 0; i--){
+            for(int j = i; j >= 0; j--){
+                int down = dp[i + 1][j];
+                int diag = dp[i + 1][j + 1];
+
+                dp[i][j] = triangle[i][j] + min(down, diag);
+            }
+        }
+
+        return dp[0][0];
+    }
+};
