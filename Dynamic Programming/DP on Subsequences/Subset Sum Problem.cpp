@@ -217,26 +217,7 @@ This tells us whether the required sum can be formed using all n elements.
 */
 class Solution {
   public:
-  
-    bool solve(int i, int sum, int n, vector<int>& arr, vector<vector<int>>& dp){
-        
-        if(sum == 0) return true;
-        
-        if(i == 0) return (arr[0] == sum);
-        
-        if(dp[i][sum] != -1) return dp[i][sum];
-        
-        bool take = false;
-        
-        if(sum >= arr[i]){
-            take = solve(i - 1, sum - arr[i], n, arr, dp);
-        }
-        
-        bool not_take = solve(i - 1, sum, n, arr, dp);
-        
-        return dp[i][sum] = (take || not_take);
-    }
-  
+
     bool isSubsetSum(vector<int>& arr, int sum) {
         
         int n = arr.size();
