@@ -5,7 +5,6 @@ GFG link -> https://www.geeksforgeeks.org/problems/subset-sum-problem-1611555638
 // RECUSRION ->
 /*
 solve(i, sum) means:
-
 Can we form sum using elements from index 0 to i?
 
 Base case 1:
